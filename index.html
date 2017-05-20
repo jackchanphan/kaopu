@@ -13,12 +13,17 @@
 			}
 			Emitter.prototype={
 				once:function(type,obj,callback,once){
-					var once = once||true;
+					var flag;
+					if( once==undefined){
+						flag=true;
+					}else{
+						flag=once;
+					}
 					var list = this.list;
 					if(list[type]==undefined){
 						list[type]=[];
 					}
-					list[type].push({'subscriber':obj,'callback':callback,'once':once});
+					list[type].push({'subscriber':obj,'callback':callback,'once':flag});
 				},
 				sub:function(type,obj,callback){
 					this.once(type,obj,callback,false);

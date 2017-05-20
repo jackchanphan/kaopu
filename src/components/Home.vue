@@ -15,12 +15,18 @@
 			<p class="text-gray f12">每天9：00-10：00 等你来评</p>
 		</div>
 	</div>
-	<quiz href="http://www.baidu.com" title="P2P平台被监管一查就死的情况,怎么看？"
-		 answer="柒哥、牛小青等回答了问题" pv="1.5k"  msgs="32"></quiz>
-	<quiz href="http://www.baidu.com" title="P2P平台已经跑了一半了，是否意味着剩下的都是优质平台？"
-		  pv="1.5k"  msgs="0"></quiz>
-	<quiz href="http://www.baidu.com" title="我们在投资P2P时，到底是看中了哪些优点？"
-		 answer="我是昵称你别不信" pv="1.5k" tu="20" msgs="32" src="http://c.csdnimg.cn/public/common/toolbar/images/f_icon.png"></quiz>
+	<div class="quizlist">
+		<div v-for="(quiz,index) in quizlist">
+			<quiz :id='index' :href="quiz.href" :title="quiz.title"
+			 :answer="quiz.answer" :pv="quiz.pv" :tu="quiz.tu" :msgs="quiz.msgs" :src="quiz.src"></quiz>
+		</div><!--
+		<quiz href="http://www.baidu.com" title="P2P平台被监管一查就死的情况,怎么看？"
+			 answer="柒哥、牛小青等回答了问题" pv="1.5k"  msgs="32"></quiz>
+		<quiz href="http://www.baidu.com" title="P2P平台已经跑了一半了，是否意味着剩下的都是优质平台？"
+			  pv="1.5k"  msgs="0"></quiz>
+		<quiz href="http://www.baidu.com" title="我们在投资P2P时，到底是看中了哪些优点？"
+			 answer="我是昵称你别不信" pv="1.5k" tu="20" msgs="32" src="http://c.csdnimg.cn/public/common/toolbar/images/f_icon.png"></quiz>-->
+	</div>
 	<appfooter></appfooter>
 	</div>
 </template>
@@ -38,8 +44,44 @@ export default {
   },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      quizlist:[
+      	{
+      		href:'http://www.baidu.com',
+      		title:'P2P平台被监管一查就死的情况,怎么看？',
+      		answer:'柒哥、牛小青等回答了问题',
+      		pv:'1.5k',
+      		msgs:'32',
+      		tu:'20',
+      		src:'http://c.csdnimg.cn/public/common/toolbar/images/f_icon.png'
+      	},
+      	{
+      		href:'http://www.baidu.com',
+      		title:'P2P平台被监管一查就死的情况,怎么看？',
+      		answer:'柒哥、牛小青等回答了问题',
+      		pv:'1.5k',
+      		msgs:'32'
+      	},
+      	{
+      		href:'http://www.baidu.com',
+      		title:'P2P平台被监管一查就死的情况,怎么看？',
+      		answer:'柒哥、牛小青等回答了问题',
+      		msgs:'32',
+      		tu:'20',
+      		src:'http://c.csdnimg.cn/public/common/toolbar/images/f_icon.png'
+      	}
+      ]
     }
+  },
+  mounted(){
+  	emitter.sub('quiz-update',this,function(data){
+  		if(data.constructor!=Array.constructor){return ;}
+  		for(var i=0;i<data.length;i++){
+  			this.quizlist.push(data[i]);
+  		}
+  	});
+  	emitter.sub('inc',this.quizlist,function(index){
+  		this[index].tu++;
+  	})
   }
 }
 </script>
