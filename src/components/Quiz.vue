@@ -1,19 +1,28 @@
 <template>
-	<div class="quiz box">
+	<div class="quiz box" :id="id">
 		<div class="wrap95">
 		<a :href="href">
 			<div class="title">{{title}}</div>
+		</a>
 			<div class="body clearfix text-gray">
 				<div class="ib left">
-					<div v-if="src" class="ib icon-user"><img :src="src" alt="" /></div>
-					<div class="ib">{{answer}}</div></div>
+					<a :href="usrlink">
+						<div v-if="src" class="ib icon-user"><img :src="src" alt="" /></div>
+						<div class="ib">{{answer}}</div>
+					</a>
+				</div>
 				<div class="ib right">
-					<div v-if="pv" class="ib pv"><i class="icon-pv"></i><span>{{pv}}</span></div>
-					<div v-if="tu" class="ib thumbsup"><i class="icon-thumbsup"></i><span>{{tu}}</span></div>
-					<div v-if="msgs" class="ib msgs"><i class="icon-msgs"></i><span>{{msgs}}</span></div>
+					<div v-if="pv" class="ib pv">
+						<a :href="pvlink"><i class="icon-pv"></i><span>{{pv}}</span></a>
+					</div>
+					<div v-if="tu" class="ib thumbsup">
+						<a :href="tulink" @click="thumbsup(id)"><i class="icon-thumbsup"></i><span>{{tu}}</span></a>
+					</div>
+					<div v-if="msgs" class="ib msgs">
+						<a :href="msgslink"><i class="icon-msgs"></i><span>{{msgs}}</span></a>
+					</div>
 				</div>
 			</div>
-			</a>
 		</div>
 	</div>
 </template>
@@ -21,7 +30,9 @@
 <script>
 	export default{
 		name:"quiz",
-		props: {'message':{default:''},
+		props: {
+				'id':{default:0},
+				'message':{default:''},
 				'title':{default:''},
 				'answer':{
 					default:'还没有人回答该问题'
@@ -30,8 +41,25 @@
 				'tu':{default:0},
 				'msgs':{default:0},
 				'href':{default:''},
-				'src':{default:''}
+				'src':{default:''},
+				'usrlink':{default:'javascript:void(0);'},
+				'pvlink':{default:'javascript:void(0);'},
+				'tulink':{default:'javascript:void(0);'},
+				'msgslink':{default:'javascript:void(0);'}
+	},
+	data(){
+		return {
+			incflag:true
 		}
+	},
+	methods:{
+		thumbsup(id){
+			if(this.incflag){
+				emitter.emit('inc',id);
+				this.incflag=false;
+			}
+		}
+	}
 	}
 </script>
 
