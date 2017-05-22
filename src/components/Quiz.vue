@@ -77,7 +77,7 @@ i{
 	height:16px;
 	background-position: center center;
 	background-repeat: no-repeat;
-	background-size: 100% 100%;
+	background-size: contain;
 }
 .left{
 	float:left;
