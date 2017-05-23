@@ -42,11 +42,20 @@
 				<div v-for="(itm,index) in platforms" class="platform-itm">
 					<platform :platformName="itm.platformName" :score="itm.score" :abstract="itm.abstract" :tags="itm.tags" :id="'platform'+index">
 					</platform>
-					<div v-for="(review,index) in itm.reviews" class="review-list">
-						<review :id="'review'+index"
-							 :username="review.username"
-							 :iconUserSrc="review.iconUserSrc"
-							 :title="review.title" ></review>
+					<div v-if="itm.reviews && itm.reviews.length>0" class="review-list">
+					<div class="cover">▼</div>
+					<div v-for="(review,index2) in itm.reviews.slice(0,2)">
+						<review :id="'pf'+index+'-review'+index2" 
+							:class="'review'+index2" 
+							:username="review.username" 
+							:iconUserSrc="review.iconUserSrc" 
+							:title="review.title" 
+							:comment="review.comment" 
+							:score="review.score"></review>
+					</div>
+					</div>
+					<div  v-if="itm.reviews && itm.reviews.length>2" class="view-more">
+						查看剩余{{itm.reviews.length-2}}条评分 >
 					</div>
 				</div>
 			</div>
@@ -71,17 +80,55 @@
 		},
 		data() {
 			return {
-				platforms: [
-					{ platformName: 'haha' },
-					{
-						platformName: 'enen',
+				platforms: [{
+						platformName: '人人贷',
 						score: 3.5,
 						abstract: '年利率：6%-12%    期限：活期-2年    银行背景     5年平台',
 						tags: [{ name: '标难抢', cnt: 12 }, { name: '人太多', cnt: 1 }, { name: '人太帅', cnt: 23 }],
-						reviews: [{ username: '柒哥',
-						title: '专业风控', 
-						iconUserSrc: 'http://c.csdnimg.cn/public/common/toolbar/images/f_icon.png' 
+						reviews: [{
+							username: '柒哥',
+							title: '专业风控',
+							score: 4,
+							comment: ' 不靠谱的平台有几个表象。高调的宣传，铺天盖地的广告靠谱的平台有几个回份大幅度感到发到深圳打工尴尬铺天盖地的广告靠谱的平台有几个回份大幅度感到发到深圳打工尴尬',
+							iconUserSrc: 'http://c.csdnimg.cn/public/common/toolbar/images/f_icon.png'
 						}]
+
+					},
+					{
+						platformName: '人人贷',
+						score: 3.5,
+						abstract: '年利率：6%-12%    期限：活期-2年    银行背景     5年平台',
+						tags: [{ name: '标难抢', cnt: 12 }, { name: '人太多', cnt: 1 }, { name: '人太帅', cnt: 23 }],
+						reviews: [
+						{
+							username: '柒哥',
+							title: '专业风控',
+							score: 4,
+							comment: ' 不靠谱的平台有几个表象。高调的宣传，铺天盖地的广告靠谱的平台有几个回份大幅度感到发到深圳打工尴尬铺天盖地的广告靠谱的平台有几个回份大幅度感到发到深圳打工尴尬',
+							iconUserSrc: 'http://c.csdnimg.cn/public/common/toolbar/images/f_icon.png'
+						},
+						{
+							username: '你是小白',
+							title: '专业风控',
+							score: 3.7,
+							comment: ' 不靠谱的平台有几个表象。高调的宣传，铺天盖地的广告靠谱的平台有几个回份大幅度感到发到深圳打工尴尬铺天盖地的广告靠谱的平台有几个回份大幅度感到发到深圳打工尴尬',
+							iconUserSrc: 'http://c.csdnimg.cn/public/common/toolbar/images/f_icon.png'
+						},
+						{
+							username: '你是小白',
+							title: '专业风控',
+							score: 3.7,
+							comment: ' 不靠谱的平台有几个表象。高调的宣传，铺天盖地的广告靠谱的平台有几个回份大幅度感到发到深圳打工尴尬铺天盖地的广告靠谱的平台有几个回份大幅度感到发到深圳打工尴尬',
+							iconUserSrc: 'http://c.csdnimg.cn/public/common/toolbar/images/f_icon.png'
+						},
+						{
+							username: '你是小白',
+							title: '专业风控',
+							score: 3.7,
+							comment: ' 不靠谱的平台有几个表象。高调的宣传，铺天盖地的广告靠谱的平台有几个回份大幅度感到发到深圳打工尴尬铺天盖地的广告靠谱的平台有几个回份大幅度感到发到深圳打工尴尬',
+							iconUserSrc: 'http://c.csdnimg.cn/public/common/toolbar/images/f_icon.png'
+						}
+						]
 
 					},
 					{ platformName: 'aaaa' }
@@ -92,25 +139,27 @@
 			$('.thumbnails').click(function() {
 				$('.sublinks').toggle(100);
 			});
+			$('#app-header .quiz').css({
+				display: 'none'
+			});
+			$('#app-header .logo').css({
+				'left': '.25rem',
+				'margin-left': 0
+			});
+			$('.review-list .cover').click(function(){
+				$(this).hide();
+				$(this).parent().css('height','100%');
+			});
 		}
 	}
 </script>
-
-<style>
-	#app-header .quiz {
-		display: none;
-	}
-	
-	#app-header .logo {
-		left: .25rem;
-		margin-left: 0;
-	}
-</style>
 <style scoped lang="less">
 	.index-main {
 		color: #868686;
+		padding-bottom: 50px;
 	}
-	.platforms-list{
+	
+	.platforms-list {
 		padding-top: 45px;
 	}
 	.sublinks {
@@ -126,7 +175,7 @@
 	}
 	
 	nav {
-		position:fixed;
+		position: fixed;
 		width: 100%;
 		z-index: 9999;
 		background: #fff;
@@ -158,7 +207,7 @@
 		content: "。";
 		position: absolute;
 		left: -.4rem;
-		top: -1.9rem;
+		top: -1.8rem;
 		color: #ccc;
 		line-height: 38px;
 	}
@@ -187,7 +236,30 @@
 	.platform-itm:not(:first-child) {
 		margin: 5px 0;
 	}
-	.review-list{
-		margin:1rem 0;
+	
+	.review-list {
+		position:relative;
+		margin: 1rem 0;
+		border-radius: 8px;
+		overflow: hidden;
+		height:10rem;
+	}
+	.review-list .cover{
+		position:absolute;
+		width:100%;
+		text-align: center;
+		padding:1rem 0;
+		top:80px;
+		background: linear-gradient(180deg,rgba(255,255,255,.8),rgb(240,240,240));
+	}
+	.view-more{
+		color: #6987b7;
+		text-align: center;
+		padding-bottom: 1rem;
+	}
+</style>
+<style>
+	.review-list>div:not(:last-child) .dotbox{
+		border-bottom: 1px dotted #aaa;
 	}
 </style>

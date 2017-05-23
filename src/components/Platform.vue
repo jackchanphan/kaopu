@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="btn-follow">
-			关注（{{follow}}）
+			关注 ({{follow}})
 		</div>
 	</div>
 </template>
