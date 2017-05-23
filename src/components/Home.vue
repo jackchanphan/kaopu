@@ -19,13 +19,7 @@
 		<div v-for="(quiz,index) in quizlist">
 			<quiz :id='index' :href="quiz.href" :title="quiz.title"
 			 :answer="quiz.answer" :pv="quiz.pv" :tu="quiz.tu" :msgs="quiz.msgs" :src="quiz.src"></quiz>
-		</div><!--
-		<quiz href="http://www.baidu.com" title="P2P平台被监管一查就死的情况,怎么看？"
-			 answer="柒哥、牛小青等回答了问题" pv="1.5k"  msgs="32"></quiz>
-		<quiz href="http://www.baidu.com" title="P2P平台已经跑了一半了，是否意味着剩下的都是优质平台？"
-			  pv="1.5k"  msgs="0"></quiz>
-		<quiz href="http://www.baidu.com" title="我们在投资P2P时，到底是看中了哪些优点？"
-			 answer="我是昵称你别不信" pv="1.5k" tu="20" msgs="32" src="http://c.csdnimg.cn/public/common/toolbar/images/f_icon.png"></quiz>-->
+		</div>
 	</div>
 	<appfooter></appfooter>
 	</div>

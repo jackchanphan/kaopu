@@ -3,7 +3,7 @@
 	<div id="app-header">
 		<div class="wrap">
 		<div class="quiz ib"><router-link to="/quiz">提问</router-link></div>
-		<div class="logo ib"></div>
+		<div class="logo ib"><router-link to="/"></router-link></div>
 		<div class="mag ib"><a href=""><i class="icon-mag"></i></a></div>
 		</div>
 	</div>
@@ -28,6 +28,11 @@
 	}
     .logo{
         background-image: url(../assets/logo.png);
+    }
+    .logo a{
+    	display: block;
+    	width: 100%;
+    	height:100%;
     }
     .quiz{
     	height:100%;
