@@ -16,7 +16,7 @@
 						<a :href="pvlink"><i class="icon-pv"></i><span>{{pv}}</span></a>
 					</div>
 					<div v-if="tu" class="ib thumbsup">
-						<a :href="tulink" @click="thumbsup(id)"><i class="icon-thumbsup"></i><span>{{tu}}</span></a>
+						<a :href="tulink" :id="'tu-'+id_" @click="thumbsup('tu-'+id_)"><i class="icon-thumbsup"></i><span>{{tu_}}</span></a>
 					</div>
 					<div v-if="msgs" class="ib msgs">
 						<a :href="msgslink"><i class="icon-msgs"></i><span>{{msgs}}</span></a>
@@ -49,14 +49,18 @@
 	},
 	data(){
 		return {
-			incflag:true
+			incflag:true,
+			id_:this.id,
+			tu_:this.tu
 		}
 	},
 	methods:{
 		thumbsup(id){
 			if(this.incflag){
-				emitter.emit('inc',id);
+				this.tu_++;
 				this.incflag=false;
+				console.log($('#'+id).find('i'));
+				$('#'+id).find('i').removeClass('icon-thumbsup').addClass('icon-thumbsup-active');
 			}
 		}
 	}
@@ -94,6 +98,9 @@ i{
 }
 .icon-thumbsup{
 	background-image: url(../assets/icon-quiz-thumbsup.png);
+}
+.icon-thumbsup-active{
+	background-image: url(../assets/icon-quiz-thumbsup-active.png);
 }
 .icon-msgs{
 	background-image: url(../assets/icon-quiz-msgs.png);

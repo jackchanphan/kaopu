@@ -53,6 +53,12 @@ i{
     flex-flow:row nowrap;
     justify-content: space-around;
 }
+.vmiddle{
+	vertical-align: middle;
+}
+.vtop{
+	vertical-align: top;
+}
 .ib{
     display: inline-block;
 }

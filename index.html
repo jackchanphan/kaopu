@@ -14,7 +14,7 @@
 				left:0;
 				width:100%;
 				height: 100%;
-				background: #ECECEC;
+				background: radial-gradient(white,gray);
 				z-index: 99999;
 			}
 			.main-cover span{
@@ -32,8 +32,11 @@
   	<script>
   		$('<div class="main-cover"><span>靠谱理财</span></div>').appendTo(document.body);
   		setTimeout(function(){
-  			$('.main-cover').fadeOut(1000);
-  		},1000);
+  			$('.main-cover').fadeOut(500,'swing');
+  		},3500);
+			emitter.sub('change-title',window,function(d){
+				document.title = d;
+			});
   	</script>
 	    <div id="app"></div>
 	    <!-- built files will be auto injected -->

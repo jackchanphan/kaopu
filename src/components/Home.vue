@@ -3,10 +3,10 @@
 	<appheader></appheader>
 	<div class="channels">
 		<ul class="flex-center">
-			<li class="channel"><a href=""><i class="icon-channel1"></i><p>问答</p></a></li>
-			<li class="channel"><a href=""><i class="icon-channel2"></i><p>课题组</p></a></li>
-			<li class="channel"><a href=""><i class="icon-channel3"></i><p>理财专栏</p></a></li>
-			<li class="channel"><a href=""><i class="icon-channel4"></i><p>每日财讯</p></a></li>
+			<li class="channel"><router-link to="/"><i class="icon-channel1"></i><p>问答</p></router-link></li>
+			<li class="channel"><router-link to="/"><i class="icon-channel2"></i><p>课题组</p></router-link></li>
+			<li class="channel"><router-link to="/"><i class="icon-channel3"></i><p>理财专栏</p></router-link></li>
+			<li class="channel"><router-link to="/"><i class="icon-channel4"></i><p>每日财讯</p></router-link></li>
 		</ul>
 	</div>
 	<div class="subjects box">

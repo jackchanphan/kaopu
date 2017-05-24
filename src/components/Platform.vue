@@ -15,7 +15,7 @@
 				{{abstract}}
 			</div>
 			<div v-if="tags && tags.length>0" class="taglist">
-				<span class="tag" v-for="(tag,index) in tags_" @click="incTag(index)">{{tag.name}}({{tag.cnt}})</span>
+				<span :id="id+'-tag'+index" class="tag" v-for="(tag,index) in tags_" @click="incTag(index,id+'-tag'+index)">{{tag.name}}({{tag.cnt}})</span>
 			</div>
 		</div>
 		<div class="btn-follow" @click="incFollow()">
@@ -28,6 +28,7 @@
 	export default{
 		name:'platform',
 		props:{
+			id:{default:0},
 			platformSrc:{default:null},
 			platformName:{default:""},
 			follow:{default:0},
@@ -49,10 +50,11 @@
 				this.follow_++;
 				this.followFlag=true;
 			},
-			incTag:function(index){
+			incTag:function(index,tId){
 				if(this.tagFlag[index] && this.tagFlag[index]==1){return;}
 				this.tags_[index].cnt++;
 				this.tagFlag[index]=1;
+				$('#'+tId).addClass('tagInc');
 			}
 		}
 	}
@@ -124,5 +126,9 @@
 		padding:5px;
 		border:1px solid #ccc;
 		margin-right: 1rem;
+	}
+	.tagInc{
+		background: @green;
+		color:#fff;
 	}
 </style>

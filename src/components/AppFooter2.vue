@@ -20,6 +20,10 @@
 </script>
 
 <style scoped>
+	.nav{
+		width:33.33%;
+		text-align: center;
+	}
 	.nav i{
 		width: 26px;
 		height:26px;

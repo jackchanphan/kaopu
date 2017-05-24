@@ -4,7 +4,7 @@
 			<li class="nav active"><router-link to="/"><i class="icon-home"></i><p>首页</p></router-link></li>
 			<li class="nav"><router-link to="/index"><i class="icon-index"></i><p>指数</p></router-link></li>
 			<li class="nav"><router-link to="/discovery"><i class="icon-discovery"></i><p>发现</p></router-link></li>
-			<li class="nav"><router-link to="/user_self"><i class="icon-self"></i><p>我</p></router-link></li>
+			<li class="nav"><router-link to="/user/-1"><i class="icon-self"></i><p>我</p></router-link></li>
 		</ul>
 	</div>
 </template>
