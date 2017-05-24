@@ -46,7 +46,7 @@
 			</nav>
 			<div class="platforms-list">
 				<div v-for="(itm,index) in platforms" class="platform-itm">
-					<platform :platformName="itm.platformName" :score="itm.score" :abstract="itm.abstract" :tags="itm.tags" :id="'platform'+index">
+					<platform :platformSrc="itm.platformSrc" :platformName="itm.platformName" :score="itm.score" :abstract="itm.abstract" :tags="itm.tags" :id="'platform'+index">
 					</platform>
 					<div v-if="itm.reviews && itm.reviews.length>0" class="review-list">
 					<div class="cover">▼</div>
@@ -87,6 +87,7 @@
 		data() {
 			return {
 				platforms: [{
+						platformSrc: 'https://www.baidu.com/img/bd_logo1.png',
 						platformName: '人人贷',
 						score: 4.5,
 						abstract: '年利率：6%-12%    期限：活期-2年    银行背景     5年平台',
@@ -101,6 +102,7 @@
 
 					},
 					{
+						platformSrc:'https://imgsa.baidu.com/news/q%3D100/sign=be01a7932d7f9e2f763519082f31e962/6a63f6246b600c3398cecbbd104c510fd9f9a10b.jpg',
 						platformName: '人人贷',
 						score: 3.5,
 						abstract: '年利率：6%-12%    期限：活期-2年    银行背景     5年平台',
@@ -186,6 +188,11 @@
 		z-index: 9999;
 		background: #fff;
 		top: 66px;
+	}
+	
+	nav>ul>li{
+		width:20%;
+		text-align: center;
 	}
 	
 	nav>ul {

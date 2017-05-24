@@ -91,6 +91,9 @@ h1, h2 {
 	text-align: center;
 	padding:1.5rem 0;
 }
+.channel{
+	width:25%;
+}
 .channel a{
 	display: inline-block;
 }

@@ -21,8 +21,12 @@
 </script>
 
 <style scoped>
+	.nav{
+		width:25%;
+		text-align: center;
+	}
 	.nav i{
-		width: 26px;
+		width: 25%;
 		height:26px;
 		background-repeat: no-repeat;
 		background-size: 100% 100%;

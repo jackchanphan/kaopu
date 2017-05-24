@@ -1,6 +1,8 @@
 <template>
 	<div class="platform pos-rel">
-		<div class="icon-platform"></div>
+		<div class="icon-platform">
+			<img v-if="platformSrc" :src="platformSrc" />
+		</div>
 		<div class="ib mid">
 			<div v-if="platformName" class="platformName">{{platformName}}</div>
 			<div class="score">
@@ -26,6 +28,7 @@
 	export default{
 		name:'platform',
 		props:{
+			platformSrc:{default:null},
 			platformName:{default:""},
 			follow:{default:0},
 			score:{default:0},
@@ -36,8 +39,8 @@
 			return {
 				tags_:this.tags,
 				follow_:this.follow,
-				tagFlag:false,
-				followFlag:new Array(this.tags.length)
+				followFlag:false,
+				tagFlag:new Array(this.tags.length)
 			}
 		},
 		methods:{
@@ -47,9 +50,9 @@
 				this.followFlag=true;
 			},
 			incTag:function(index){
-				if(this.followFlag[index] && this.followFlag[index]==1){return;}
+				if(this.tagFlag[index] && this.tagFlag[index]==1){return;}
 				this.tags_[index].cnt++;
-				this.followFlag[index]=1;
+				this.tagFlag[index]=1;
 			}
 		}
 	}
@@ -62,6 +65,7 @@
 		font-size: 18px;
 	}
 	.icon-platform{
+		overflow: hidden;
 		display:inline-block;
 		border-radius: 50%;
 		border:1px solid #ececec;
@@ -69,6 +73,10 @@
 		height: 65px;
 		vertical-align: top;
 		margin:0 1rem 0 0;
+	}
+	.icon-platform img{
+		width:100%;
+		height:100%;
 	}
 	.btn-follow{
 		position: absolute;
