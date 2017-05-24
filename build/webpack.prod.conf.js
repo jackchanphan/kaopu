@@ -64,7 +64,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
     }),
-    new ManifestPlugin(path.join('dist', 'manifest.json')),
+    new ManifestPlugin(path.join('C:\\xampp\\htdocs\\', 'manifest.json')),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
