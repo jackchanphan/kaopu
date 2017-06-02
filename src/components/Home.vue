@@ -15,7 +15,7 @@
 			<p class="text-gray f12">每天9：00-10：00 等你来评</p>
 		</div>
 	</div>
-	<div class="quizlist">
+	<div class="quizlist scrollable">
 		<div v-for="(quiz,index) in quizlist">
 			<quiz :id='index' :href="quiz.href" :title="quiz.title"
 			 :answer="quiz.answer" :pv="quiz.pv" :tu="quiz.tu" :msgs="quiz.msgs" :src="quiz.src"></quiz>
@@ -62,12 +62,43 @@ export default {
       		msgs:'32',
       		tu:'20',
       		src:'http://c.csdnimg.cn/public/common/toolbar/images/f_icon.png'
+      	},
+      	{
+      		href:'http://www.baidu.com',
+      		title:'P2P平台被监管一查就死的情况,怎么看？',
+      		answer:'柒哥、牛小青等回答了问题',
+      		msgs:'32',
+      		tu:'20',
+      		src:'http://c.csdnimg.cn/public/common/toolbar/images/f_icon.png'
+      	},
+      	{
+      		href:'http://www.baidu.com',
+      		title:'P2P平台被监管一查就死的情况,怎么看？',
+      		answer:'柒哥、牛小青等回答了问题',
+      		msgs:'32',
+      		tu:'20',
+      		src:'http://c.csdnimg.cn/public/common/toolbar/images/f_icon.png'
+      	},
+      	{
+      		href:'http://www.baidu.com',
+      		title:'P2P平台被监管一查就死的情况,怎么看？',
+      		answer:'柒哥、牛小青等回答了问题',
+      		msgs:'32',
+      		tu:'20',
+      		src:'http://c.csdnimg.cn/public/common/toolbar/images/f_icon.png'
       	}
       ]
     }
   },
   mounted(){
-  	emitter.sub('quiz-update',this,function(data){
+  	console.log($('#app-header').outerHeight());
+  	console.log($('.channels').outerHeight());
+  	console.log($('.subjects').outerHeight());
+  	console.log($('#app-footer').outerHeight());
+  	
+  	initScrollable();
+  	//$('.quizlist').css('height',$(window).height()-$('#app-header').outerHeight()-$('.channels').outerHeight()-$('.subjects').outerHeight()-$('#app-footer').outerHeight()-5);
+	emitter.sub('quiz-update',this,function(data){
   		console.log(data);
   		if(data.constructor!=[].constructor){return ;}
   		for(var i=0;i<data.length;i++){
@@ -130,6 +161,6 @@ h1, h2 {
 	vertical-align: middle;
 }
 .quizlist{
-	padding-bottom: 50px;
+	overflow-y: auto;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<appheader></appheader>
-		<div class="index-main">
+		<div class="index-main scrollable">
 			<nav>
 				<ul class="flex-center">
 					<li>
@@ -144,6 +144,8 @@
 			}
 		},
 		mounted() {
+			initScrollable();
+			//$('.platforms-list').css('height',$(window).height()-$('#app-header').outerHeight()-$('nav').outerHeight()-$('#app-footer').outerHeight()+5);
 			$('.thumbnails').click(function() {
 				$('.sublinks').toggle(100);
 			});
@@ -164,11 +166,12 @@
 <style scoped lang="less">
 	.index-main {
 		color: #868686;
-		padding-bottom: 50px;
+		overflow-y:auto ;
 	}
 	
 	.platforms-list {
-		padding-top: 43px;
+		margin-top: 43px;
+		overflow-y: auto;
 	}
 	.sublinks {
 		display: none;

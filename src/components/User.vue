@@ -233,7 +233,13 @@
 	.tabs .current{
 		border-color:@green;
 	}
+	.current-box{
+		background: #fff;
+	}
 	.current-box>ul:not(:first-child){
 		display: none;
+	}
+	.comment{
+		border-bottom:1px solid #ececec;
 	}
 </style>

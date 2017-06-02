@@ -37,6 +37,23 @@
 			emitter.sub('change-title',window,function(d){
 				document.title = d;
 			});
+			
+	var initScrollable = function(){
+  		let siblings = $('.scrollable').siblings();
+  		let cntDown = $(window).height();
+  		for(let i=0;i<siblings.size();i++){
+  			cntDown -= siblings.eq(i).outerHeight();
+  		}
+  		$('.scrollable').css({
+  			'height':cntDown,
+  			position:'absolute',
+  			width:'100%',
+  			'overfloat-x':'hidden'
+  		});
+  	}
+	window.onresize = function(){
+		initScrollable();
+	}
   	</script>
 	    <div id="app"></div>
 	    <!-- built files will be auto injected -->
