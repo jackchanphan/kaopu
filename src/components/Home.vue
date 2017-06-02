@@ -91,14 +91,8 @@ export default {
     }
   },
   mounted(){
-  	console.log($('#app-header').outerHeight());
-  	console.log($('.channels').outerHeight());
-  	console.log($('.subjects').outerHeight());
-  	console.log($('#app-footer').outerHeight());
-  	
   	initScrollable();
-  	//$('.quizlist').css('height',$(window).height()-$('#app-header').outerHeight()-$('.channels').outerHeight()-$('.subjects').outerHeight()-$('#app-footer').outerHeight()-5);
-	emitter.sub('quiz-update',this,function(data){
+  	emitter.sub('quiz-update',this,function(data){
   		console.log(data);
   		if(data.constructor!=[].constructor){return ;}
   		for(var i=0;i<data.length;i++){

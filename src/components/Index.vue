@@ -145,7 +145,6 @@
 		},
 		mounted() {
 			initScrollable();
-			//$('.platforms-list').css('height',$(window).height()-$('#app-header').outerHeight()-$('nav').outerHeight()-$('#app-footer').outerHeight()+5);
 			$('.thumbnails').click(function() {
 				$('.sublinks').toggle(100);
 			});
