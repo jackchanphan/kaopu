@@ -68,6 +68,9 @@ i{
     padding:0 5px;
     border-radius:3px;
 }
+.fixed{
+	position:fixed;
+}
 .clear{
     clear:both;
 }
@@ -79,6 +82,9 @@ i{
 }
 .left{
     float:left;
+}
+.right{
+	float:right;
 }
 .center{
     margin:0 auto;

@@ -211,6 +211,7 @@
 		width: 2rem;
 		background: #fff;
 		vertical-align: middle;
+		margin-top:-.75rem;
 	}
 	
 	.sep {

@@ -39,17 +39,35 @@
 			});
 			
 	var initScrollable = function(){
-  		let siblings = $('.scrollable').siblings();
-  		let cntDown = $(window).height();
-  		for(let i=0;i<siblings.size();i++){
-  			cntDown -= siblings.eq(i).outerHeight();
-  		}
-  		$('.scrollable').css({
+			let root = $('.scrollable');
+			let parentList = [];
+			let cntDownList = [];
+			while(root.parent().children().length>1){
+				parentList.push(root);
+				root = root.parent();
+			}
+			while(parentList.length>0){
+				let tmp = parentList.pop();
+			for(let i=0;i<tmp.siblings().length;i++){
+				if(tmp!=tmp.siblings().eq(i)){
+					let child = tmp.siblings().eq(i);
+					cntDownList.push(child.outerHeight());
+				}
+			}
+			root = tmp;
+			}
+			
+			let cntDown = $(window).height();
+			for(let i=0;cntDownList.length>0;i++){
+				cntDown -= cntDownList.pop();
+			}
+			$('.scrollable').css({
   			'height':cntDown,
   			position:'absolute',
   			width:'100%',
-  			'overfloat-x':'hidden'
-  		});
+  			'overflow-x':'hidden',
+  			'overflow-y':'auto'
+  	});
   	}
 	window.onresize = function(){
 		initScrollable();

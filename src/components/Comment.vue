@@ -19,6 +19,10 @@
 		<div class="ev-content">
 			{{evContent}}
 		</div>
+		<div class="footer clearfix">
+			<div class="comment-date left">{{commentDate}}</div>
+			<div class="comment-follow right"><a :href="commentFollowHref">评论{{commentFollow}}&nbsp;&nbsp;...</a></div>
+		</div>
 	</div>
 </template>
 
@@ -27,16 +31,17 @@
 		name:'comment',
 		props:{
 			id:{default:0},
-			platformSrc:{default:null},
+			platformSrc:{default:'http://c.csdnimg.cn/public/common/toolbar/images/f_icon.png'},
 			platformName:{default:"未命名"},
 			evOK:{default:0},
 			evNOK:{default:0},
 			score:{default:0},
 			evContent:{default:'暂无评论'},
-			tags:{default:function(){return [];}}
+			commentDate:{default:'1分钟前'},
+			commentFollow:{default:'0'},
+			commentFollowHref:{default:'javascript:void(0);'}
 		},
 		data(){
-			console.log(this);
 			return {
 				evOK_:this.evOK,
 				evNOK_:this.evNOK
@@ -96,6 +101,7 @@
 		background: @green;
 		color:#fff;
 		border-color: @green;
+		border-color:@green;
 	}
 	.btn-evaluate span{
 		padding:.5rem;
@@ -147,5 +153,9 @@
 	}
 	.ev-content{
 		margin-top: 1rem;
+	}
+	.footer{
+		margin-top: 1.5rem;
+		color:#999;
 	}
 </style>

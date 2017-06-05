@@ -12,11 +12,18 @@
 <script>
 	export default {
   name: 'appfooter',
+  props:{
+  	active:{default:0}
+  },
   methods: {
     log() {
       console.log('footer');
     },
   },
+  mounted(){
+  	$('#app-footer .nav').removeClass('active');
+  	$('#app-footer .nav').eq(this.active).addClass('active');
+  }
 };
 </script>
 
