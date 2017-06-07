@@ -67,7 +67,7 @@
 			</div>
 		</div>
 		<div class="linearbg-reverse bottom"></div>
-		<appfooter></appfooter>
+		<appfooter :userId="loginUser.userId"></appfooter>
 	</div>
 </template>
 
@@ -86,6 +86,10 @@
 		},
 		data() {
 			return {
+		      loginUser:{
+		      	userId:-1,
+		      	userName:'jackchan'
+		      },
 				platforms: [{
 						platformSrc: 'https://www.baidu.com/img/bd_logo1.png',
 						platformName: '人人贷',

@@ -3,7 +3,7 @@
 		<ul class="flex-center">
 			<li class="nav active"><router-link to="/index"><i class="icon-index"></i><p>靠谱指数</p></router-link></li>
 			<li class="nav"><router-link to="/comment"><i class="icon-comment"></i><p>千人共评</p></router-link></li>
-			<li class="nav"><router-link to="/user_self"><i class="icon-self"></i><p>个人中心</p></router-link></li>
+			<li class="nav"><router-link :to="'/user/'+userId"><i class="icon-self"></i><p>个人中心</p></router-link></li>
 		</ul>
 	</div>
 </template>
@@ -11,6 +11,9 @@
 <script>
 	export default {
   name: 'appfooter',
+  props:{
+  	userId:{default:-1}
+  },
   methods: {
     log() {
       console.log('footer');

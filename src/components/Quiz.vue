@@ -59,7 +59,6 @@
 			if(this.incflag){
 				this.tu_++;
 				this.incflag=false;
-				console.log($('#'+id).find('i'));
 				$('#'+id).find('i').removeClass('icon-thumbsup').addClass('icon-thumbsup-active');
 			}
 		}

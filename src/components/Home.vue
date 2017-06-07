@@ -21,7 +21,7 @@
 			 :answer="quiz.answer" :pv="quiz.pv" :tu="quiz.tu" :msgs="quiz.msgs" :src="quiz.src"></quiz>
 		</div>
 	</div>
-	<appfooter></appfooter>
+	<appfooter :userId="loginUser.userId"></appfooter>
 	</div>
 </template>
 
@@ -38,6 +38,10 @@ export default {
   },
   data () {
     return {
+      loginUser:{
+      	userId:3,
+      	userName:'jackchan'
+      },
       quizlist:[
       	{
       		href:'http://www.baidu.com',
@@ -101,7 +105,30 @@ export default {
   	});
   	emitter.sub('inc',this.quizlist,function(index){
   		this[index].tu++;
-  	})
+  	});
+  	setTimeout(function emitData(){
+  		emitter.emit('quiz-update',[
+      	{
+      		href:'http://www.baidu.com',
+      		title:'P2P平台被监管一查就死的情况,怎么看？',
+      		answer:'柒哥、牛小青等回答了问题',
+      		pv:'1.5k',
+      		msgs:'32',
+      		tu:Math.round(Math.random()*(1<<Math.round(Math.random()))*10),
+      		src:'http://c.csdnimg.cn/public/common/toolbar/images/f_icon.png'
+      	},
+      	{
+      		href:'http://www.baidu.com',
+      		title:'P2P平台被监管一查就死的情况,怎么看？',
+      		answer:'柒哥、牛小青等回答了问题',
+      		pv:'1.5k',
+      		tu:Math.round(Math.random()*(1<<Math.round(Math.random()))*10),
+      		msgs:'32'
+      	}]);
+  		/*setTimeout(function(){
+  			emitData();
+  		},Math.random()*(Math.random()*1000000));*/
+  	},Math.random()*(Math.random()*10000));
   }
 }
 </script>
